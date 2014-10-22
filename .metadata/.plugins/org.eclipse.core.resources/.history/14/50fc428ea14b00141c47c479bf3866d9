@@ -1,0 +1,66 @@
+package fibonacci_Modified;
+
+import java.util.Scanner;
+import java.math.BigInteger;  
+
+
+
+
+public class Solution {
+
+
+	
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int n = sc.nextInt();
+		
+
+		
+	/*	So, if the first two terms of the series are 0 and 1: 
+			the third term = 1^2 + 0 = 1 
+			fourth term = 1^2 + 1 = 2 
+			fifth term = 2^2 + 1 = 5 */
+		
+	//	Tn+2 = (Tn+1)2 + Tn
+			
+			//bigINTEGER 
+			int n1=a;
+			int n2=b;
+			int n3=n2*n2+n1;
+			int n4=n3*n3+n2;
+			int n5=n4*n4+n3;
+
+			
+			
+			 BigInteger bigInteger2 = new BigInteger ("112334");
+			
+			BigInteger _n = new BigInteger("0");
+			BigInteger _n1 = BigInteger.valueOf(n5);
+			BigInteger _n2 = BigInteger.valueOf(n4);
+			
+	
+			
+			
+			
+			for (int i=6; i<=n; i++){
+				
+				
+//				_n=_n1*_n1+_n2;
+				
+				_n = _n1.pow(2).add(_n2);
+				_n1=_n;
+				_n2=_n1;
+				
+				
+				
+			}
+			System.out.println(_n.abs());
+				
+		
+	}
+
+}

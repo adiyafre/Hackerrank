@@ -1,0 +1,68 @@
+package grid_Search;
+
+import java.util.Scanner;
+
+
+public class Solution {
+
+
+	
+	public static void main(String[] args) {
+		
+		
+
+		
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+
+		int R = sc.nextInt();
+
+		int C = sc.nextInt();
+
+		
+		int[][] pattern = new int[R][C];
+				
+				
+		for (int i = 0; i<R; i++){
+		 for (int j = 0; j<C; j++)
+			
+			pattern[i][j] = sc.nextInt();
+
+
+		}
+		
+		
+		int r = sc.nextInt();
+
+		int c = sc.nextInt();
+
+		
+		int[][] look = new int[r][c];
+				
+				
+		for (int i = 0; i<r; i++){
+		 for (int j = 0; j<c; j++)
+			
+			look[i][j] = sc.nextInt();
+
+
+		}
+		
+		
+		
+		for (int i = 0; i<R; i++){
+			 for (int j = 0; j<C; j++)
+				
+				System.out.println(look[i][j]);
+
+			 System.out.println();
+			}
+			
+			
+			
+
+
+		
+	}
+
+}

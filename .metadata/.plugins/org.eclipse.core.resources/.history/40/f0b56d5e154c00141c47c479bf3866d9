@@ -1,0 +1,206 @@
+package almost_Sorted;
+
+import java.util.Scanner;
+
+public class Solution2 {
+	
+	public static int checkSwapNear(int[] a, int[] pattern, int n){
+		boolean check = false;
+		int count = 0;
+		int pos = 0;
+			for(int i=0; i<n; i++)
+				if (pattern[i]==1) {count++; pos=i;}
+			
+			if(count==1) {
+				int temp = a[pos]; 
+				a[pos] = a[pos+1];
+				a[pos+1] = temp;
+				
+				
+				check = true;
+			}
+		
+		
+		if (check) return pos;
+		else return -1;
+		
+	}
+	
+	public static int[][] checkSwapFar(int[] a, int[] pattern, int n){
+		boolean check = false;
+		int count = 0;
+		int pos = 0;
+		int posprev = 0;	
+		
+		int[][] ret = new int[1][2];
+		ret[0][0] = -1; 
+		ret[0][1] = -1;
+
+		
+		 for(int i=0; i<n; i++)
+				if (pattern[i]==1) {count++; posprev=pos; pos=i; }
+			
+			
+		 
+		 	if(count==2 ) {
+				
+							
+				
+				int temp = a[posprev]; 
+				a[posprev] = a[pos+1];
+				a[pos+1] = temp;
+				
+				
+				
+				ret[0][0] = posprev;
+				ret[0][1] = pos;
+				check = true;
+			}
+
+			
+			return ret;
+			
+			
+	}
+	
+	
+	
+	public static int checkSwapMid(int[] a, int[] pattern, int n){
+		boolean check = false;
+		int count = 0;
+		int pos = 0;
+			for(int i=0; i<n; i++)
+				if (pattern[i]==1) {count++; pos=i;}
+			
+			if(count==2 && pattern[pos]==1 & pattern[pos+1] ==1) {
+				int temp = a[pos]; 
+				a[pos] = a[pos+2];
+				a[pos+2] = temp;
+				
+				
+				check = true;
+			}
+		
+			
+			if (check) return pos;
+			else return -1;
+	}
+	
+	
+	
+	
+	
+	public static boolean checkSort(int[] a, int n){
+		
+		boolean sorted = true;
+		for (int i = 0 ; i<n-1; i++)
+		 	if (a[i]>a[i+1]) sorted = false;
+		
+		return sorted;
+		
+		
+			
+	}
+
+
+    public static void main(String[] args) {
+        
+    	
+    	
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+
+		int[] x = new int[n];
+		
+		int[] pattern = new int[n];
+
+		
+		for (int t = 0; t<n; t++){
+		
+			
+			x[t] = sc.nextInt();
+
+		
+		}
+		
+		
+		for (int t = 0; t<n-1; t++){
+			
+			if (x[t]<x[t+1]) pattern[t] = 0;
+			else pattern[t] = 1;
+			
+			//System.out.print(pattern[t]);
+		}
+        
+        
+        
+  
+        int first = 0, last = 0;
+        boolean fb = false, lb = false;
+        
+
+        for (int i = 0; i < n; i++) {
+            if (!fb && i > 0 && (x[i] < x[i - 1])) {
+                first = i - 1;
+                fb = true;
+            }
+        }
+        while (fb && first - 1 >= 0 && x[first] == x[first - 1]) {
+            first--;
+        }
+        for (int i = n - 1; i > 0; i--) {
+            if (x[i] < x[i - 1]) {
+                last = i;
+                break;
+            }
+        }
+        while (fb && last + 1 < n && x[last] == x[last + 1]) {
+            last++;
+        }
+        if (last == 0 && first == 0) {
+            System.out.println("yes");
+        } else {
+            swap(first, last, x);
+            if (check(x,n)) {
+                System.out.println("yes");
+                System.out.println("swap " + (first + 1) + " " + (last + 1));
+            } else {
+                swap(first, last,x);
+                int j = 0;
+                for (int i = first; i <= first + (last - first) / 2; i++) {
+                    swap(i, last - j,x);
+                    j++;
+                }
+                if (check(x,n)) {
+                    System.out.println("yes");
+                    System.out.println("reverse " + (first + 1) + " " + (last + 1));
+                } else
+                {
+                    System.out.println("no");
+                }
+            }
+        }
+    }
+    
+    public static void swap(int i, int j, int[] x) {
+        int temp = x[i];
+        x[i] = x[j];
+        x[j] = temp;
+    }
+
+    public static boolean check(int[] x, int n) {
+        for (int i = 1; i < n; i++) {
+            if (x[i] < x[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+}
+
+
+    
+	
+	
+

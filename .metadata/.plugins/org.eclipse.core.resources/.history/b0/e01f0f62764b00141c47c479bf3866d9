@@ -1,0 +1,54 @@
+package xor_subsequence;
+
+import java.util.Scanner;
+import java.math.BigInteger;  
+
+
+
+
+public class Solution {
+
+
+	
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+	
+		
+		int[] a = new int[n+1];
+		
+		for (int t = 1; t<=n; t++){
+		
+			
+			int k = sc.nextInt();
+			a[t] = k;
+			
+		
+		}
+		
+		
+		
+		for (int i=1; i<=n; i++){
+			
+			
+			for (int j=i; j<=n-i; j++){
+				
+				System.out.println(j);
+				for (int m=i; m<i+j; m++)
+				
+				System.out.print(m+":");
+				
+				
+			}
+			System.out.println("t");
+			
+			
+		}
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+INDEX VERSION 1.127+C:\Users\frenzy\Desktop\HackerRank\.metadata\.plugins\org.eclipse.jdt.core
+2891087612.index
+2659642018.index
+1337259748.index
+1835716717.index
